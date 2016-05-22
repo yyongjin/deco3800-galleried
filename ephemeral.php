@@ -11,6 +11,85 @@ session_start();
 <script src="js/java.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link rel="stylesheet" href="style/lightbox.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+(function($) {
+    $(document).ready(function () {
+        /*-------------------- EXPANDABLE PANELS ----------------------*/
+        var panelspeed = 500; //panel animate speed in milliseconds
+        var totalpanels = 3; //total number of collapsible panels
+        var defaultopenpanel = 0; //leave 0 for no panel open
+        var accordian = false; //set panels to behave like an accordian, with one panel only ever open at once      
+ 
+        var panelheight = new Array();
+        var currentpanel = defaultopenpanel;
+        var iconheight = parseInt($('.icon-close-open').css('height'));
+        var highlightopen = true;
+ 
+        //Initialise collapsible panels
+        function panelinit() {
+                for (var i=1; i<=totalpanels; i++) {
+                    panelheight[i] = parseInt($('#cp-'+i).find('.expandable-panel-content').css('height'));
+                    $('#cp-'+i).find('.expandable-panel-content').css('margin-top', -panelheight[i]);
+                    if (defaultopenpanel == i) {
+                        $('#cp-'+i).find('.icon-close-open').css('background-position', '0px -'+iconheight+'px');
+                        $('#cp-'+i).find('.expandable-panel-content').css('margin-top', 0);
+                    }
+                }
+        }
+ 
+        $('.expandable-panel-heading').click(function() {
+            var obj = $(this).next();
+            var objid = parseInt($(this).parent().attr('ID').substr(3,2));
+            currentpanel = objid;
+            if (accordian == true) {
+                resetpanels();
+            }
+ 
+            if (parseInt(obj.css('margin-top')) <= (panelheight[objid]*-1)) {
+                obj.clearQueue();
+                obj.stop();
+                obj.prev().find('.icon-close-open').css('background-position', '0px -'+iconheight+'px');
+                obj.animate({'margin-top':0}, panelspeed);
+                if (highlightopen == true) {
+                    $('#cp-'+currentpanel + ' .expandable-panel-heading').addClass('header-active');
+                }
+            } else {
+                obj.clearQueue();
+                obj.stop();
+                obj.prev().find('.icon-close-open').css('background-position', '0px 0px');
+                obj.animate({'margin-top':(panelheight[objid]*-1)}, panelspeed);
+                if (highlightopen == true) {
+                    $('#cp-'+currentpanel + ' .expandable-panel-heading').removeClass('header-active');
+                }
+            }
+        });
+ 
+        function resetpanels() {
+            for (var i=1; i<=totalpanels; i++) {
+                if (currentpanel != i) {
+                    $('#cp-'+i).find('.icon-close-open').css('background-position', '0px 0px');
+                    $('#cp-'+i).find('.expandable-panel-content').animate({'margin-top':-panelheight[i]}, panelspeed);
+                    if (highlightopen == true) {
+                        $('#cp-'+i + ' .expandable-panel-heading').removeClass('header-active');
+                    }
+                }
+            }
+        }
+        
+       //Uncomment these lines if the expandable panels are not a fixed width and need to resize
+       /* $( window ).resize(function() {
+          panelinit();
+        });*/
+ 
+        $(window).load(function() {
+            panelinit();
+        }); //END LOAD
+    }); //END READY
+})(jQuery);
+</script>
+
 </head>
 
 <div id="drupal">
@@ -153,22 +232,39 @@ session_start();
 		
 		<div id="mainleft">
 		<p id="p3">
-			<p class="maintitle">Opening</p> 
-
-			Friday 8 April 6.15 for 6.30 pm<br>
+			
+			  <div id="collapse-container">
+    <div class="expandable-panel" id="cp-1">
+        <div class="expandable-panel-heading">
+            <h2>Opening<span class="icon-close-open"></span></h2>
+         </div>
+        <div class="expandable-panel-content">
+            Friday 8 April 6.15 for 6.30 pm<br>
 			to be opened by<br>
 			Aileen Burns and Johan Lundh<br>
 			Executive Co-Directors and Curators of the Institute of Modern Art<br><br>
-
-
-			<p class="maintitle">Public Program</p>
-
-			Saturday 9 April 2.00 - 3.30 pm<br>
+			
+        </div>
+    </div>
+ 
+    <div class="expandable-panel" id="cp-2">
+        <div class="expandable-panel-heading">
+            <h2>Public Program<span class="icon-close-open"></span></h2>
+         </div>
+        <div class="expandable-panel-content">
+           Saturday 9 April 2.00 - 3.30 pm<br>
 			Artist-run initiatives: DIY change agents?<br>
 			Curator Peter Anderson and artists Virginia Barratt, Brian Doherty, Jeanelle Hurst and Jay Younger reflect on the Brisbane scene and its socio-cultural context.<br><br>
 			Free. All are welcome. <br>
 			<a href="https://uqcurrent.custhelp.com/ci/documents/detail/5/639/12/799fca43395e3c81679c04e71fe9d7a453dbd4db">RSVP Friday 1 April</a>
-		</p>
+ 
+        </div>
+  </div>
+ 
+  
+ 
+</div>
+        
 		</div>
 		
 		<div id="mainright">
