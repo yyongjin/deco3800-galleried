@@ -4,13 +4,14 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add Exhibitions</title>
+<title>RSVP</title>
 <link rel="stylesheet" href="style/main.css">
 <link rel="shortcut icon" href="images/icon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="http://www.artmuseum.uq.edu.au/misc/favicon.ico" type="image/vnd.microsoft.icon" />
 <script src="js/java.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link rel="stylesheet" href="style/lightbox.css">
+
 </head>
 
 <div id="drupal">
@@ -39,10 +40,10 @@ session_start();
   	<div id="dbexhibition">
 	<button id="btnexhibition" class="btns"><a href="#">EXHIBITIONS</a></button>
 	<div id="dropdown-exhibition">
-	<a href="add.php">ADD EXHIBITIONS</a>
+	<a href="current.php">ADD EXHIBITIONS</a>
     <a href="current.php">CURRENT EXHIBITIONS</a>
     <a href="#">COMING SOON</a>
-    <a href="past.php">PAST EXHIBITIONS</a>
+    <a href="#">PAST EXHIBITIONS</a>
   	</div>
   	</div>
 	
@@ -107,104 +108,88 @@ session_start();
 	</div>
 	
 	
-	<div class="container">
+	<div class="rsvpcontainer">
    
                 <div class="panel-heading">  
-                    <p class="formwords">Add New Exhibitions</p>  
+                    <p class="formwords">RSVP</p>  
                 </div>  
                 
-               	<div class="panel-body">  
+                <div id="rvspimgcont">
+				<img id="rsvpimg" src="images/ephemeral-traces.jpg">
+				</div>
+                
+               	<div class="rsvp-panel-body">  
                     <form id="inputform" role="form" method="post" action="#">  
-                        <div id="left-col">
-                        	<p class="leftwords">Exhibition Name:</p><br>
-                        	<p class="leftwords">Exhibition Period:</p><br>
-                        	<p class="leftwords">Exhibition Description:</p><br><br><br><br><br>
-                        	<p class="leftwords">Exhibition Curator:</p><br>
-                        	<p class="leftwords">Artwork Image:</p><br>
-                        	<p class="leftwords">Name of Artwork:</p><br>
-                        	<p class="leftwords">Year of Artwork:</p><br>
-                        	<p class="leftwords">Type of Artwork:</p><br>
-                        	<p class="leftwords">Source:</p><br>
-                        	<p class="leftwords">Select Template:</p><br><br><br>
-                        	<p class="leftwords">Additional Resources:</p><br>
-                        	<p class="leftwords">Exhibition Data (If Any):</p><br>
+                        <div id="rsvp-left-col">
+                        	<p class="leftwords">Title:</p><br>
+                        	<p class="leftwords">First Name:</p><br>
+                        	<p class="leftwords">Last Name:</p><br>
+                        	<p class="leftwords">Email Address:</p><br>
                         </div>
                         
-                        <div id="right-col">
+                        <div id="rsvp-right-col">
                         	<div id="holder">
                         	
                         		<div class="form-group">  
                             		<input class="form-control" name="ename" type="text" autofocus>
                         		</div>  <br>
-                        		
-                            	<div class="date-group">  
-                                	<input class="dateinput" name="date1" type="date" autofocus> -
-                            		<input class="dateinput" name="date2" type="date" autofocus>
-                            	</div> <br> 
-                            	
-                            	<div class="form-group">  
-                                	<textarea class="bigform-control" name="edesc" type="text" autofocus></textarea>  
-                            	</div>  <br>
                            
                             	<div class="form-group">  
                                 	<input class="form-control" name="ecurator" type="text" autofocus>  
                             	</div>  <br>
                             
-								<div id="uploadpic">
-    								<input type="file" name="fileToUpload" id="fileToUpload">
-                            	</div> <br>
-                            
                             	<div class="form-group">  
                                 	<input class="form-control"  name="aname" type="text" autofocus>  
-                            	</div>  <br>
-                            
-                            	<div class="form-group">  
-                            		<SCRIPT LANGUAGE="JavaScript">
-									var time = new Date();
-									var year = time.getYear();
-									if (year < 1900) {
-									year = year + 1900;
-									}
-									var date = year - 150; 
-									var future = year + 1; 
-									document.writeln ("<FORM><SELECT><OPTION value=\"\">Year");
-									do {
-									date++;
-									document.write ("<OPTION value=\"" +date+"\">" +date+ "");
-									}
-									while (date < future)
-									document.write ("</SELECT></FORM>");
-									</script> 
                             	</div>  <br>
                             	
                             	<div class="form-group">  
                                		<input class="form-control"  name="atype" type="text" autofocus>  
                            		</div>  <br>
                            		
-                            	<div class="form-group">  
-                                	<input class="form-control"  name="asource" type="text" autofocus>  
-                            	</div>  <br>
-                            
-                             	<div class="rad-group">  
-                               		<input id="rad1" type="radio" name="gender" value="male"><label class="btnrad" for="rad1"> Portraits & Paintings</label><br>
-                                	<input id="rad2" type="radio" name="gender" value="male"><label class="btnrad" for="rad2"> Sculptures & 3D Artwork</label><br>
-                           			<input id="rad3" type="radio" name="gender" value="male"><label class="btnrad" for="rad3"> Videos</label>
-                            	</div>  <br> <br>
-                            
-                            	<div id="uploadpic">
-    								<input type="file" name="fileToUpload" id="fileToUpload">
-                            	</div> <br>
-                        
-                        		<div id="uploadpic">
-    								<input type="file" name="fileToUpload" id="fileToUpload">
-                            	</div> <br>
+                            	
+                    
                     
                     		</div>
                     	</div>
-                    	<div id="btngroup">
+                    	
+                    	<div id="rsvp-middle-col">
+                    		<p class="midwords"><u>RSVP Opening Friday 8 April 6.15pm</u></p>
+                    		<div class="midgroup">
+                    		<input id="rad1" type="radio" name="8april" value="yes"><label class="btnrad" for="rad1"> Yes  </label>
+                            <input id="rad2" type="radio" name="8april" value="no"><label class="btnrad" for="rad2"> No  </label><br>
+                    		</div><br><br>
+                    		<p class="midwords">Please indicate how many guests you are bringing to the opening (if any).</p>
+                    		<div class="midgroup1">
+                    		<input id="rad1" type="radio" name="guest1" value="male"><label class="btnrad" for="rad1"> 1  </label>
+                    		<input id="rad1" type="radio" name="guest1" value="male"><label class="btnrad" for="rad1"> 2  </label>
+                    		<input id="rad1" type="radio" name="guest1" value="male"><label class="btnrad" for="rad1"> 3  </label>
+                            <input id="rad2" type="radio" name="guest1" value="male"><label class="btnrad" for="rad2"> 4  </label><br>
+                    		</div><br><br><br>
+                    		<p class="midwords"><u>RSVP Public Program Saturday 9 April 2.00 pm</u></p>
+                    		<div class="midgroup">
+                    		<input id="rad1" type="radio" name="9april" value="yes"><label class="btnrad" for="rad1"> Yes  </label>
+                            <input id="rad2" type="radio" name="9april" value="no"><label class="btnrad" for="rad2"> No  </label><br>
+                    		</div><br><br>
+                    		<p class="midwords">Please indicate how many guests you are bringing to the opening (if any).</p>
+                    		<div class="midgroup1">
+                    		<input id="rad1" type="radio" name="guest2" value="male"><label class="btnrad" for="rad1"> 1  </label>
+                    		<input id="rad1" type="radio" name="guest2" value="male"><label class="btnrad" for="rad1"> 2  </label>
+                    		<input id="rad1" type="radio" name="guest2" value="male"><label class="btnrad" for="rad1"> 3  </label>
+                            <input id="rad2" type="radio" name="guest2" value="male"><label class="btnrad" for="rad2"> 4  </label><br>
+                    		</div><br><br><br>
+                    		<p class="midwords">Keep informed of UQ Art Museum's exhibitions, public programs, and events and subscribe here.</p>
+                    		<div class="midgroup">
+                    		<input id="rad1" type="radio" name="subscribe" value="yes"><label class="btnrad" for="rad1"> Yes  </label>
+                            <input id="rad2" type="radio" name="subscribe" value="no"><label class="btnrad" for="rad2"> No  </label><br>
+                            </div>
+                            
+                    	</div>	
+                    	
+                    	<div class="btngroup">
                             		<input class="formbtn" type="submit" value="Publish" name="publish" >
                             		<button class="formbtn" type="reset" value="Reset">Reset</button>
                             	</div>
+                    	
                     </form>  
                     
                 </div>  

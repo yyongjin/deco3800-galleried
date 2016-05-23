@@ -121,7 +121,7 @@ session_start();
 	<a href="add.php">ADD EXHIBITIONS</a>
     <a href="current.php">CURRENT EXHIBITIONS</a>
     <a href="#">COMING SOON</a>
-    <a href="#">PAST EXHIBITIONS</a>
+    <a href="past.php">PAST EXHIBITIONS</a>
   	</div>
   	</div>
 	
@@ -256,7 +256,7 @@ session_start();
 			Artist-run initiatives: DIY change agents?<br>
 			Curator Peter Anderson and artists Virginia Barratt, Brian Doherty, Jeanelle Hurst and Jay Younger reflect on the Brisbane scene and its socio-cultural context.<br><br>
 			Free. All are welcome. <br>
-			<a href="https://uqcurrent.custhelp.com/ci/documents/detail/5/639/12/799fca43395e3c81679c04e71fe9d7a453dbd4db">RSVP Friday 1 April</a>
+			<a href="rsvp.php">RSVP Friday 1 April</a>
  
         </div>
   </div>

@@ -42,7 +42,7 @@ session_start();
 	<a href="add.php">ADD EXHIBITIONS</a>
     <a href="current.php">CURRENT EXHIBITIONS</a>
     <a href="#">COMING SOON</a>
-    <a href="#">PAST EXHIBITIONS</a>
+    <a href="past.php">PAST EXHIBITIONS</a>
   	</div>
   	</div>
 	
